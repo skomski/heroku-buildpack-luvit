@@ -19,3 +19,4 @@ chmod +x luvit
 
 mkdir -p bin
 mv luvit bin/luvit
+PATH="$BUILD_DIR/bin:$PATH"
