@@ -7,19 +7,19 @@ Usage
 -----
 
     $ ls
-    configure  Makefile  myapp.c
+    package.lua Procfile server.lua
 
-    $ heroku create --stack cedar --buildpack http://github.com/skomski/heroku-buildpack-luvit.git
+    $ heroku create --stack cedar --buildpack http://github.com/Skomski/heroku-buildpack-luvit.git
 
     $ git push heroku master
     ...
     -----> Heroku receiving push
-    -----> Fetching custom buildpack
-    -----> Luvit app detected
-    -----> Configuring
-           Looking for somelibrary… ok
-    -----> Compiling with Make
-           gcc -o myapp myapp.c
+    -----> Fetching custom buildpack... done
+    -----> luvit app detected
+    -----> Fetching Luvit version 0.3.1
+    -----> Discovering process types
+           Procfile declares types -> web
+    -----> Compiled slug size is 1.1MB
 
 The buildpack will detect your luvit app if it has the file `package.lua` in the root.
 
