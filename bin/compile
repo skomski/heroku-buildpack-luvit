@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+# bin/compile <build-dir> <cache-dir>
+
+set -e
+set -o pipefail
+
+LUVIT_VERSION="0.3.10"
+
+BUILD_DIR=$1
+CACHE_DIR=$2
+
+function indent() {
+  c='s/^/       /'
+  case $(uname) in
+    Darwin) sed -l "$c";;
+    *)      sed -u "$c";;
+  esac
+}
+
+cd $BUILD_DIR
+
+LUVIT_URL="https://github.com/luvit/luvit-releases/blob/master/$LUVIT_VERSION/ubuntu11.10/x86_64/luvit-bundled/luvit"
+echo "-----> Fetching Luvit version $LUVIT_VERSION"
+curl --silent --max-time 60 --location "$LUVIT_URL"
+
+mkdir -p bin
+mv luvit bin/luvit
