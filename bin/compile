@@ -4,24 +4,18 @@
 set -e
 set -o pipefail
 
-LUVIT_VERSION="0.3.10"
+LUVIT_VERSION="0.3.1"
 
 BUILD_DIR=$1
 CACHE_DIR=$2
 
-function indent() {
-  c='s/^/       /'
-  case $(uname) in
-    Darwin) sed -l "$c";;
-    *)      sed -u "$c";;
-  esac
-}
-
 cd $BUILD_DIR
 
-LUVIT_URL="https://github.com/luvit/luvit-releases/blob/master/$LUVIT_VERSION/ubuntu11.10/x86_64/luvit-bundled/luvit"
+LUVIT_URL="https://github.com/luvit/luvit-releases/raw/master/$LUVIT_VERSION/ubuntu11.10/x86_64/luvit-bundled/luvit"
 echo "-----> Fetching Luvit version $LUVIT_VERSION"
-curl --silent --max-time 60 --location "$LUVIT_URL"
+curl --silent -O --max-time 60 --location "$LUVIT_URL"
+
+chmod +x luvit
 
 mkdir -p bin
 mv luvit bin/luvit
