@@ -4,14 +4,14 @@
 set -e
 set -o pipefail
 
-LUVIT_VERSION="0.3.1"
+LUVIT_VERSION="0.4.0"
 
 BUILD_DIR=$1
 CACHE_DIR=$2
 
 cd $BUILD_DIR
 
-LUVIT_URL="https://github.com/luvit/luvit-releases/raw/master/$LUVIT_VERSION/ubuntu11.10/x86_64/luvit-bundled/luvit"
+LUVIT_URL="https://github.com/downloads/Skomski/heroku-buildpack-luvit/luvit"
 echo "-----> Fetching Luvit version $LUVIT_VERSION"
 curl --silent -O --max-time 60 --location "$LUVIT_URL"
 
